@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:shake/shake.dart';
 
 class DiceGame extends StatefulWidget {
   const DiceGame({super.key});
@@ -15,6 +16,14 @@ class _DiceGameState extends State<DiceGame> {
   void _rollDice() {
     setState(() {
       _diceResult = Random().nextInt(6) + 1;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () {
+      _rollDice();
     });
   }
 
