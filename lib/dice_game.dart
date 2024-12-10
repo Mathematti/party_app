@@ -10,11 +10,11 @@ class DiceGame extends StatefulWidget {
 }
 
 class _DiceGameState extends State<DiceGame> {
-  int _counter = 0;
+  int _diceResult = Random().nextInt(6) + 1;
 
   void _rollDice() {
     setState(() {
-      _counter = Random().nextInt(6) + 1;
+      _diceResult = Random().nextInt(6) + 1;
     });
   }
 
@@ -33,7 +33,7 @@ class _DiceGameState extends State<DiceGame> {
               'Your random number is:',
             ),
             Text(
-              '$_counter',
+              '$_diceResult',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
