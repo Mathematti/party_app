@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:shake_plus/shake_plus.dart';
+import 'package:vibration/vibration.dart';
 
 class DiceGame extends StatefulWidget {
   const DiceGame({super.key});
@@ -22,8 +23,11 @@ class _DiceGameState extends State<DiceGame> {
   @override
   void initState() {
     super.initState();
-    ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () {
+    ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () async {
       _rollDice();
+      if (await Vibration.hasVibrator() ?? false) {
+        Vibration.vibrate();
+      }
     });
   }
 
