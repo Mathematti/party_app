@@ -43,12 +43,9 @@ class _DiceGameState extends State<DiceGame> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Your random number is:',
-            ),
             Text(
               '$_diceResult',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 500),
             ),
           ],
         ),
