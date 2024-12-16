@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shake_plus/shake_plus.dart';
 import 'package:vibration/vibration.dart';
 
@@ -15,11 +16,13 @@ class _HotPotatoState extends State<HotPotato> {
   var isSetOff = false;
   var hasVibrator = Vibration.hasVibrator();
 
+  Timer? timer;
+
   void _restart() {
     setState(() {
       isSetOff = false;
     });
-    Timer(Duration(seconds: Random().nextInt(3) + 1), () async {
+    timer = Timer(Duration(seconds: Random().nextInt(50) + 10), () async {
       setState(() {
         isSetOff = true;
       });
@@ -42,7 +45,15 @@ class _HotPotatoState extends State<HotPotato> {
   void initState() {
     super.initState();
     _restart();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     ShakeDetector.autoStart(onPhoneShake: _handleShake);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   }
 
   @override
