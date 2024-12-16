@@ -14,22 +14,21 @@ class DiceGame extends StatefulWidget {
 class _DiceGameState extends State<DiceGame> {
   int _diceResult = Random().nextInt(6) + 1;
 
-  void _rollDice() {
+  var hasVibrator = Vibration.hasVibrator();
+
+  void _rollDice() async {
     setState(() {
       _diceResult = Random().nextInt(6) + 1;
     });
+    if (await hasVibrator ?? false) {
+      Vibration.vibrate(duration: 200);
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    var hasVibrator = Vibration.hasVibrator();
-    ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () async {
-      _rollDice();
-      if (await hasVibrator ?? false) {
-        Vibration.vibrate(duration: 200);
-      }
-    });
+    ShakeDetector.autoStart(onPhoneShake: _rollDice);
   }
 
   @override
@@ -45,7 +44,10 @@ class _DiceGameState extends State<DiceGame> {
           children: <Widget>[
             Text(
               '$_diceResult',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 500),
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium
+                  ?.copyWith(fontSize: 500),
             ),
           ],
         ),
