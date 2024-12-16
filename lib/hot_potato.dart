@@ -22,7 +22,7 @@ class _HotPotatoState extends State<HotPotato> {
     setState(() {
       isSetOff = false;
     });
-    timer = Timer(Duration(seconds: Random().nextInt(50) + 10), () async {
+    timer = Timer(Duration(seconds: Random().nextInt(20) + 10), () async {
       setState(() {
         isSetOff = true;
       });
