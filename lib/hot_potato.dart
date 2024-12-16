@@ -46,7 +46,7 @@ class _HotPotatoState extends State<HotPotato> {
     super.initState();
     _restart();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-    ShakeDetector.autoStart(onPhoneShake: _handleShake);
+    // ShakeDetector.autoStart(onPhoneShake: _handleShake);
   }
 
   @override
