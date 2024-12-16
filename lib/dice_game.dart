@@ -23,10 +23,11 @@ class _DiceGameState extends State<DiceGame> {
   @override
   void initState() {
     super.initState();
+    var hasVibrator = Vibration.hasVibrator();
     ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () async {
       _rollDice();
-      if (await Vibration.hasVibrator() ?? false) {
-        Vibration.vibrate();
+      if (await hasVibrator ?? false) {
+        Vibration.vibrate(duration: 200);
       }
     });
   }
