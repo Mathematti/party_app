@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shake_plus/shake_plus.dart';
 import 'package:vibration/vibration.dart';
@@ -18,10 +19,13 @@ class _HotPotatoState extends State<HotPotato> {
     setState(() {
       isSetOff = false;
     });
-    Timer(const Duration(seconds: 3), () {
+    Timer(Duration(seconds: Random().nextInt(3) + 1), () async {
       setState(() {
         isSetOff = true;
       });
+      if (await hasVibrator ?? false) {
+        Vibration.vibrate(duration: 1000);
+      }
     });
   }
 
