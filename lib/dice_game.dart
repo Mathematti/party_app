@@ -39,17 +39,14 @@ class _DiceGameState extends State<DiceGame> {
         title: const Text("Dice Game"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '$_diceResult',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium
-                  ?.copyWith(fontSize: 500),
-            ),
-          ],
+        child: FittedBox(
+          child: Text(
+            '$_diceResult',
+            style: Theme.of(context)
+                .textTheme
+                .headlineMedium
+                ?.copyWith(fontSize: 500),
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
