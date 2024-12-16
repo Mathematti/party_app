@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:shake/shake.dart';
+import 'package:shake_plus/shake_plus.dart';
 
 class DiceGame extends StatefulWidget {
   const DiceGame({super.key});
