@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:shake_plus/shake_plus.dart';
 import 'package:vibration/vibration.dart';
@@ -17,13 +15,14 @@ class _HotPotatoState extends State<HotPotato> {
   var hasVibrator = Vibration.hasVibrator();
 
   void _restart() {
-    isSetOff = false;
+    setState(() {
+      isSetOff = false;
+    });
     Timer(const Duration(seconds: 3), () {
       setState(() {
         isSetOff = true;
       });
     });
-
   }
 
   void _handleShake() async {
@@ -46,9 +45,14 @@ class _HotPotatoState extends State<HotPotato> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: isSetOff ? Colors.red[500] : Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: isSetOff
+            ? Colors.red[500]
+            : Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Hot Potato"),
       ),
+      backgroundColor: isSetOff
+          ? Colors.red[500]
+          : Theme.of(context).scaffoldBackgroundColor,
       floatingActionButton: FloatingActionButton(
         onPressed: _restart,
         tooltip: 'Increment',
