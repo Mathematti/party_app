@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shake_plus/shake_plus.dart';
 import 'package:vibration/vibration.dart';
 
 class HotPotato extends StatefulWidget {
