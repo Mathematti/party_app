@@ -38,6 +38,7 @@ dependencies:
   sensors_plus: ^6.1.1
   shake_plus: ^1.0.0
   vibration: ^2.0.1
+  signature: 5.5.0
 
 dev_dependencies:
   flutter_test:
