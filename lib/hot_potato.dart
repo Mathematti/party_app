@@ -31,15 +31,6 @@ class _HotPotatoState extends State<HotPotato> {
     });
   }
 
-  void _handleShake() async {
-    // setState(() {
-    //   s = Random().nextInt(6) + 1;
-    // });
-    // if (await hasVibrator ?? false) {
-    //   Vibration.vibrate(duration: 200);
-    // }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -67,11 +58,11 @@ class _HotPotatoState extends State<HotPotato> {
       backgroundColor: isSetOff
           ? Colors.red[500]
           : Theme.of(context).scaffoldBackgroundColor,
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: isSetOff ? FloatingActionButton(
         onPressed: _restart,
         tooltip: 'Increment',
         child: const Icon(Icons.restart_alt_outlined),
-      ),
+      ) : null,
     );
   }
 }
