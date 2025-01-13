@@ -39,6 +39,7 @@ dependencies:
   shake_plus: ^1.0.0
   vibration: ^2.0.1
   signature: 5.5.0
+  stop_watch_timer: ^3.2.1
 
 dev_dependencies:
   flutter_test:

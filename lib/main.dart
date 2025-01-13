@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:party_app/dice_game.dart';
-import 'package:party_app/drawing_game.dart';
+import 'package:party_app/drawing_game_options.dart';
 import 'package:party_app/hot_potato.dart';
 
 void main() {
@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => DrawingGame()));
+                              builder: (context) => const DrawingGameOptions()));
                     },
                     child: const Text('Drawing game'))
               ],
