@@ -41,6 +41,7 @@ dependencies:
   signature: 5.5.0
   stop_watch_timer: ^3.2.1
   flutter_svg: ^2.0.17
+  confetti: ^0.8.0
 
 dev_dependencies:
   flutter_test:
