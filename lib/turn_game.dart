@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vibration/vibration.dart';
 
 class TurnGame extends StatefulWidget {
   const TurnGame({super.key});
@@ -31,9 +32,10 @@ class _TurnGameState extends State<TurnGame>
   //     Vibration.vibrate(duration: 200);
   //   }
   // }
+  
+  var hasVibrator = Vibration.hasVibrator();
 
   GyroscopeEvent? lastEvent;
-  // bool currentlyTur
 
   late StreamSubscription<GyroscopeEvent> streamSubscription;
 
@@ -77,6 +79,10 @@ class _TurnGameState extends State<TurnGame>
       _animationController.duration = Duration(milliseconds: baseSpinDuration);
       spinCount++;
     } while (spinCount <= totalSpin);
+
+    if (await hasVibrator ?? false) {
+      Vibration.vibrate();
+    }
 
     setState(() {
       isSpinning = false;
