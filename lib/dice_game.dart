@@ -25,10 +25,18 @@ class _DiceGameState extends State<DiceGame> {
     }
   }
 
+  ShakeDetector? shakeDetector;
+
   @override
   void initState() {
     super.initState();
-    ShakeDetector.autoStart(onPhoneShake: _rollDice);
+    shakeDetector = ShakeDetector.autoStart(onPhoneShake: _rollDice);
+  }
+
+  @override
+  void dispose() {
+    shakeDetector?.stopListening();
+    super.dispose();
   }
 
   @override
