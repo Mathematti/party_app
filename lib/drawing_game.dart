@@ -87,6 +87,7 @@ class _DrawingGameState extends State<DrawingGame> {
             alignment: Alignment.center,
             child: TextButton(
               onPressed: () async {
+                stopWatchTimer.onStopTimer();
                 _controllerCenter.play();
                 if (await hasVibrator ?? false) {
                   Vibration.vibrate(duration: 200);
