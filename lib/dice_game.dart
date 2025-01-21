@@ -59,7 +59,7 @@ class _DiceGameState extends State<DiceGame> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _rollDice,
-        tooltip: 'Increment',
+        tooltip: 'Roll dice',
         child: const Icon(Icons.casino),
       ),
     );
